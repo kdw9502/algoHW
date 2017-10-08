@@ -12,3 +12,5 @@
 typedef int item_type;
 void merge_sort(item_type *A, int left, int right);
 void merge(item_type *A, int left, int middle, int right);
+int count = 0;
+item_type *buffer;

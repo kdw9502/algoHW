@@ -9,7 +9,7 @@ void merge_sort(item_type *A, int left, int right) {
 		merge(A, left, middle, right);
 	}
 }
-item_type *buffer;
+
 void merge(item_type *A, int left, int middle, int right) {
 
 	int i, i_left, i_right;
@@ -31,15 +31,15 @@ void merge(item_type *A, int left, int middle, int right) {
 		A[i++] = buffer[i_right++];
 }
 
-int count = 0;
+
 int main() {
-	FILE* config = fopen("../Data_A/HW1_MSS_config.txt", "r");
+	FILE* config = fopen("Data_B/HW1_IC_config.txt", "rb");
 	int data[NSIZE_MAX] = {0}, nsize;
 	char in_string[NAME_LENGTH_MAX], out_string[NAME_LENGTH_MAX], algo_string[NAME_LENGTH_MAX], temp[NAME_LENGTH_MAX];
 	FILE *in_file, *out_file;
 
-	while (!fscanf(config, "%s %s %s", &in_string, &out_string, &algo_string)) {
-		strcat(strcpy(temp, "../Data_a/"), in_string); //temp="../Data_a/filename" 
+	while (fscanf(config, "%s %s", &in_string, &out_string)==2) {
+		strcat(strcpy(temp, "Data_B/"), in_string); //temp="../Data_a/filename" 
 		in_file = fopen(temp, "rb");
 
 		/* fseek,ftell로 n의 사이즈를 구한다. 그후 fread로 data입력 */
@@ -47,12 +47,14 @@ int main() {
 		nsize = ftell(in_file) / DATA_BYTE;
 		rewind(in_file);
 		fread(data, DATA_BYTE, nsize, in_file);
-
+		buffer = (item_type*)malloc(sizeof(item_type)*nsize);
 		merge_sort(data, 0, nsize - 1);
 
-		strcat(strcpy(temp, "../Data_a/"), out_string); //temp="../Data_a/filename" 
+		strcat(strcpy(temp, "Data_B/"), out_string); //temp="../Data_a/filename" 
 		out_file = fopen(temp, "w");
 		fprintf(out_file,"%d\n%d",nsize,count);
 		count = 0;
+		fclose(out_file);
 	}
+	fclose(config);
 }

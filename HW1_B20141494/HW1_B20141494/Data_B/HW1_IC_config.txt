@@ -1,0 +1,5 @@
+4.input 4.output.txt
+8.input 8.output.txt
+12.input 12.output.txt
+16.input 16.output.txt
+20.input 20.output.txt
