@@ -148,7 +148,7 @@ int main() {
 		result_set result = execute(type, data, nsize);
 		strcat(strcpy(temp, "Data_a/"), out_string); //temp="../Data_a/filename" 
 		out_file = fopen(temp, "w");
-		fprintf(out_file, "%d\n%d\n%d\n%d %d\n%.5f", nsize, type, result.sum, result.start, result.end, result.time);
+		fprintf(out_file, "%d\n%d\n%d\n%d %d\n%.7lf", nsize, type, result.sum, result.start, result.end, result.time);
 		fclose(out_file);
 	}
 	fclose(config);

@@ -6,7 +6,7 @@
 #include <cstring>
 #include <algorithm>
 #define NAME_LENGTH_MAX 128
-#define NSIZE_MAX 0x100000
+#define NSIZE_MAX 0x1000000
 #define DATA_BYTE 4
 
 #define IS_SAME(a,b) (strcmp(a,b)?0:1)
