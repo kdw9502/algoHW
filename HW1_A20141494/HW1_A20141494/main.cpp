@@ -1,18 +1,18 @@
 #include "main.h"
 
-/*½ºÆ®¸µÀ» enum °ªÀ¸·Î*/
+/*ìŠ¤íŠ¸ë§ì„ enum ê°’ìœ¼ë¡œ*/
 algotype str2type(char* in) {
 	if (IS_SAME(in, "A1"))return A1;
 	else if (IS_SAME(in, "A2")) return A2;
 	else if (IS_SAME(in, "A3")) return A3;
 }
-/*½ÃÇà*/
+/*ì‹œí–‰*/
 struct result_set execute(algotype type, int *data, int nsize) {
 	if (type == A1) return exeA1(data, nsize);
 	if (type == A2) return exeA2(data, nsize);
 	if (type == A3) return exeA3(data, nsize);
 }
-/*¾Ë°í¸®Áò A1*/
+/*ì•Œê³ ë¦¬ì¦˜ A1*/
 struct result_set exeA1(int *data, int nsize)
 {
 	chrono::system_clock::time_point clock_start = std::chrono::system_clock::now();
@@ -39,7 +39,7 @@ struct result_set exeA1(int *data, int nsize)
 	result.time = sec.count();
 	return result;
 }
-/*¾Ë°í¸®Áò A2*/
+/*ì•Œê³ ë¦¬ì¦˜ A2*/
 struct result_set exeA2(int *data, int nsize)
 {
 	chrono::system_clock::time_point clock_start = std::chrono::system_clock::now();
@@ -101,7 +101,7 @@ struct result_set nlognMaxSum(int *data, int left, int right) {
 		}
 		return result;
 }
-/*¾Ë°í¸®Áò A3*/
+/*ì•Œê³ ë¦¬ì¦˜ A3*/
 struct result_set exeA3(int *data, int nsize)
 {
 	struct result_set result;
@@ -136,17 +136,20 @@ int main() {
 	FILE *in_file, *out_file;
 	algotype type;
 	while (fscanf(config, "%s %s %s", &in_string, &out_string, &algo_string)==3) {
-		strcat(strcpy(temp, "Data_a/"), in_string); //temp="../Data_a/filename" 
+		strcat(strcpy(temp, "Data_a/"), in_string); //temp="Data_a/filename" 
 		in_file = fopen(temp, "rb");
 		type = str2type(algo_string);
-		/* fseek,ftell·Î nÀÇ »çÀÌÁî¸¦ ±¸ÇÑ´Ù. ±×ÈÄ fread·Î dataÀÔ·Â */
+		/* 
+		//  fseek,ftellë¡œ nì˜ ì‚¬ì´ì¦ˆë¥¼ êµ¬í•œë‹¤. ê·¸í›„ freadë¡œ dataì…ë ¥ 
 		fseek(in_file, 0, SEEK_END);
 		nsize = ftell(in_file) / DATA_BYTE;
 		rewind(in_file);
+		*/
+		fread(&nsize,DATA_BYTE,1,in_file);	
 		fread(data, DATA_BYTE, nsize, in_file);
 
 		result_set result = execute(type, data, nsize);
-		strcat(strcpy(temp, "Data_a/"), out_string); //temp="../Data_a/filename" 
+		strcat(strcpy(temp, "Data_a/"), out_string); //temp="Data_a/filename" 
 		out_file = fopen(temp, "w");
 		fprintf(out_file, "%d\n%d\n%d\n%d %d\n%.7lf", nsize, type, result.sum, result.start, result.end, result.time);
 		fclose(out_file);
