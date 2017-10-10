@@ -39,18 +39,20 @@ int main() {
 	FILE *in_file, *out_file;
 
 	while (fscanf(config, "%s %s", &in_string, &out_string)==2) {
-		strcat(strcpy(temp, "Data_B/"), in_string); //temp="../Data_a/filename" 
+		strcat(strcpy(temp, "Data_B/"), in_string); //temp="Data_b/filename" 
 		in_file = fopen(temp, "rb");
-
-		/* fseek,ftell·Î nÀÇ »çÀÌÁî¸¦ ±¸ÇÑ´Ù. ±×ÈÄ fread·Î dataÀÔ·Â */
+		/*
+		// fseek,ftellë¡œ nì˜ ì‚¬ì´ì¦ˆë¥¼ êµ¬í•œë‹¤. ê·¸í›„ freadë¡œ dataì…ë ¥ 
 		fseek(in_file, 0, SEEK_END);
 		nsize = ftell(in_file) / DATA_BYTE;
 		rewind(in_file);
+		*/
+		fread(&nsize,DATA_BYTE,1,in_file);
 		fread(data, DATA_BYTE, nsize, in_file);
 		buffer = (item_type*)malloc(sizeof(item_type)*nsize);
 		merge_sort(data, 0, nsize - 1);
 
-		strcat(strcpy(temp, "Data_B/"), out_string); //temp="../Data_a/filename" 
+		strcat(strcpy(temp, "Data_B/"), out_string); //temp="Data_b/filename" 
 		out_file = fopen(temp, "w");
 		fprintf(out_file,"%d\n%d",nsize,count);
 		count = 0;
