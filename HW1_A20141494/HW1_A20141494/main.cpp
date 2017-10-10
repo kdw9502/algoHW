@@ -1,18 +1,18 @@
 #include "main.h"
 
-/*스트링을 enum 값으로*/
+/*string to enum*/
 algotype str2type(char* in) {
 	if (IS_SAME(in, "A1"))return A1;
 	else if (IS_SAME(in, "A2")) return A2;
 	else if (IS_SAME(in, "A3")) return A3;
 }
-/*시행*/
+/*exe*/
 struct result_set execute(algotype type, int *data, int nsize) {
 	if (type == A1) return exeA1(data, nsize);
 	if (type == A2) return exeA2(data, nsize);
 	if (type == A3) return exeA3(data, nsize);
 }
-/*알고리즘 A1*/
+/*algorithm A1*/
 struct result_set exeA1(int *data, int nsize)
 {
 	chrono::system_clock::time_point clock_start = std::chrono::system_clock::now();
@@ -39,7 +39,7 @@ struct result_set exeA1(int *data, int nsize)
 	result.time = sec.count();
 	return result;
 }
-/*알고리즘 A2*/
+/*algorithm A2*/
 struct result_set exeA2(int *data, int nsize)
 {
 	chrono::system_clock::time_point clock_start = std::chrono::system_clock::now();
@@ -101,7 +101,7 @@ struct result_set nlognMaxSum(int *data, int left, int right) {
 		}
 		return result;
 }
-/*알고리즘 A3*/
+/*algorithm A3*/
 struct result_set exeA3(int *data, int nsize)
 {
 	struct result_set result;
@@ -140,7 +140,7 @@ int main() {
 		in_file = fopen(temp, "rb");
 		type = str2type(algo_string);
 		/* 
-		//  fseek,ftell로 n의 사이즈를 구한다. 그후 fread로 data입력 
+		use fseek,ftell to identify nsize.  use fread to asign data 
 		fseek(in_file, 0, SEEK_END);
 		nsize = ftell(in_file) / DATA_BYTE;
 		rewind(in_file);
