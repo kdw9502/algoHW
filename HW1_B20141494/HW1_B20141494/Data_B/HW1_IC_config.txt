@@ -1,3 +1,5 @@
-MSS_00.input MSS_00.output.txt
-MSS_01.input MSS_01.output.txt
-MSS_02.input MSS_02.output.txt
+MSS_04.input MSS_04.output.txt
+MSS_08.input MSS_08.output.txt
+MSS_12.input MSS_12.output.txt
+MSS_16.input MSS_16.output.txt
+MSS_20.input MSS_20.output.txt
