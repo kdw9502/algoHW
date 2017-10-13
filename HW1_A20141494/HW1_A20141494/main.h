@@ -12,7 +12,7 @@
 #define IS_SAME(a,b) (strcmp(a,b)?0:1)
 using namespace std;
 
-typedef enum algotype { A0,A1, A2, A3 } algotype;
+typedef enum _algotype { A0,A1, A2, A3 } algotype;
 struct result_set {
 	int sum;
 	int start, end;

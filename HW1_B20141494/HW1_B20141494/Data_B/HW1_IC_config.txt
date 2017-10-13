@@ -1,5 +1,5 @@
-4.input 4.output.txt
-8.input 8.output.txt
-12.input 12.output.txt
-16.input 16.output.txt
-20.input 20.output.txt
+MSS_04.input MSS_04.output.txt
+MSS_08.input MSS_08.output.txt
+MSS_12.input MSS_12.output.txt
+MSS_16.input MSS_16.output.txt
+MSS_20.input MSS_20.output.txt
