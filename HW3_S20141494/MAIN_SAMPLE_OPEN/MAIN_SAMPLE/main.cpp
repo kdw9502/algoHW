@@ -9,7 +9,7 @@ __int64 start, freq, end;
 #define CHECK_TIME_END(a) QueryPerformanceCounter((LARGE_INTEGER*)&end); a = (float)((float)(end - start) / (freq / 1000.0f))
 float compute_time;
 
-#define STUDENT_ID	20151234
+#define STUDENT_ID	20141494
 
 #include "test_data_config.h"  // the content of this file will be modified for evaluation.
 
@@ -83,7 +83,7 @@ void main(void) {
 #ifdef TEST_SELECTION_REC
 	sprintf(test_method, "SELECTION_REC");
 
-	test_cases_sorting = 1; // for a simple test
+	test_cases_sorting = 3; // for a simple test
 	for (int i = 0; i < test_cases_sorting; i++) {
 		read_input_data(test_data_file_sorting[i], &n, &data);
 

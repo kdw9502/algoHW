@@ -3,10 +3,12 @@
 
 int keys_compare(const void *a, const void *b) {
 	ELEMENT *rec_a, *rec_b;
-
-	// do it yourself
-
-	return 0;
+	if ( ((ELEMENT*)a)->key > ((ELEMENT*)a)->key )
+		return 1;
+	else if (((ELEMENT*)a)->key < ((ELEMENT*)a)->key)
+		return -1;
+	else
+		return 0;
 }
 
 int QSORT(ELEMENT data[], int left, int right) {
