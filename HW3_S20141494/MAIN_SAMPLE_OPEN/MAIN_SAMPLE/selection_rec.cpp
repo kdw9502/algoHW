@@ -61,9 +61,9 @@ int SELECTION_REC(ELEMENT data[], int left, int right, int k, int *index) {
 	median_index = find_index(data,left,right,subsetM[indexM].key);
 
 	for (i = left; i <= right; i++) {
-		if (data[median_index].key > data[i].key)subsetS1[sizeS1++] = data[i];
-		else if(data[median_index].key == data[i].key)subsetS2[sizeS2++] = data[i];
-		else subsetS3[sizeS3++] = data[i];
+		if (data[median_index].key > data[i].key)memcpy(&subsetS1[sizeS1++], &data[i], sizeof(ELEMENT));
+		else if(data[median_index].key == data[i].key)memcpy(&subsetS2[sizeS2++], &data[i], sizeof(ELEMENT));
+		else memcpy(&subsetS3[sizeS3++], &data[i], sizeof(ELEMENT));
 	}
 
 	if (sizeS1 >= k) {

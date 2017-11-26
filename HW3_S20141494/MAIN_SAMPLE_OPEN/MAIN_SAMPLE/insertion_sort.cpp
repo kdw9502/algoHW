@@ -12,7 +12,7 @@ int INSERTION_SORT(ELEMENT data[], int left, int right) {
 		temp = data[i];
 		for (j = i - 1,size=0; data[j].key > data[i].key && j >= left; j--, size++);
 		memcpy(&data[j + 2], &data[j + 1],sizeof(ELEMENT)* size);
-		data[j+1] = temp;
+		memcpy(&data[j + 1], &temp, sizeof(ELEMENT));
 	}
 
 	// must return 1 if the function finishes normally or return 0 otherwise

@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 #include "my_types.h"
-#define ELEMENT_SWAP(a,b) {ELEMENT temp;temp=a;a=b;b=temp;}
+#define ELEMENT_SWAP(a,b) {ELEMENT temp;memcpy(&temp,&a,sizeof(ELEMENT));memcpy(&a,&b,sizeof(ELEMENT));memcpy(&b,&temp,sizeof(ELEMENT));}
 #define MIN(a,b) (((a)<(b))?(a):(b))
 inline int pivot_select(ELEMENT*,int,int);
 
