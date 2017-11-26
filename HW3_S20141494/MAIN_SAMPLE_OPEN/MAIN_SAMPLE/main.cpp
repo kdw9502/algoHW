@@ -18,9 +18,9 @@ float compute_time;
 //#define TEST_SELECTION_REC
 //#define TEST_INSERTION_SORT
 //#define TEST_HEAP_SORT
-//#define TEST_QSORT
+#define TEST_QSORT
 #define TEST_QUICK_SORT
-//#define TEST_QUICK_SORT_OPT
+#define TEST_QUICK_SORT_OPT
 //#define TEST_QUICK_SORT_OPT_TIME_CHECK
 
 
@@ -123,7 +123,7 @@ void main(void) {
 #ifdef TEST_INSERTION_SORT
 	sprintf(test_method, "INSERTION_SORT");
 
-	test_cases_sorting = 1; // for a simple test
+	test_cases_sorting = 5; // for a simple test
 	for (int i = 0; i < test_cases_sorting; i++) {
 		read_input_data(test_data_file_sorting[i], &n, &data);
 
@@ -136,7 +136,12 @@ void main(void) {
 			fprintf(stdout, "\n");
 		}
 #endif
+		CHECK_TIME_START;
 		test_result = INSERTION_SORT(data, 0, n - 1);
+		CHECK_TIME_END(compute_time);
+		printf("*** Time taken by %s to sort the array of size %d = %.3fms\n\n", test_method, n, compute_time);
+
+
 		if (test_result == 1) {
 			// the function has finished successfully
 			fprintf(fp, "^^^ Sorting method = %s, Test file = %s, Result =  %d\n",
@@ -161,7 +166,7 @@ void main(void) {
 #ifdef TEST_HEAP_SORT
 	sprintf(test_method, "HEAP_SORT");
 
-	test_cases_sorting = 1; // for a simple test
+	test_cases_sorting = 6; // for a simple test
 	for (int i = 0; i < test_cases_sorting; i++) {
 		read_input_data(test_data_file_sorting[i], &n, &data);
 
@@ -174,8 +179,11 @@ void main(void) {
 			fprintf(stdout, "\n");
 		}
 #endif
-
+		CHECK_TIME_START;
 		test_result = HEAP_SORT(data, 0, n - 1);
+		CHECK_TIME_END(compute_time);
+		printf("*** Time taken by %s to sort the array of size %d = %.3fms\n\n", test_method, n, compute_time);
+
 		if (test_result == 1) {
 			// the function has finished successfully
 			fprintf(fp, "^^^ Sorting method = %s, Test file = %s, Result =  %d\n",
@@ -200,7 +208,7 @@ void main(void) {
 #ifdef TEST_QSORT
 	sprintf(test_method, "QSORT");
 
-	test_cases_sorting = 3; // for a simple test
+	test_cases_sorting = 6; // for a simple test
 	for (int i = 0; i < test_cases_sorting; i++) {
 		read_input_data(test_data_file_sorting[i], &n, &data);
 
@@ -242,7 +250,7 @@ void main(void) {
 #ifdef TEST_QUICK_SORT
 	sprintf(test_method, "QUICK_SORT");
 
-	test_cases_sorting = 3; // for a simple test
+	test_cases_sorting = 6; // for a simple test
 	for (int i = 0; i < test_cases_sorting; i++) {
 		read_input_data(test_data_file_sorting[i], &n, &data);
 
@@ -255,8 +263,11 @@ void main(void) {
 			fprintf(stdout, "\n");
 		}
 #endif
-
+		CHECK_TIME_START;
 		test_result = QUICK_SORT(data, 0, n - 1);
+		CHECK_TIME_END(compute_time);
+		printf("*** Time taken by %s to sort the array of size %d = %.3fms\n\n", test_method, n, compute_time);
+	
 		if (test_result == 1) {
 			// the function has finished successfully
 			fprintf(fp, "^^^ Sorting method = %s, Test file = %s, Result =  %d\n",
@@ -294,8 +305,12 @@ void main(void) {
 			fprintf(stdout, "\n");
 		}
 #endif
-
+		CHECK_TIME_START;
 		test_result = QUICK_SORT_OPT(data, 0, n - 1);
+		CHECK_TIME_END(compute_time);
+		printf("*** Time taken by %s to sort the array of size %d = %.3fms\n\n", test_method, n, compute_time);
+
+		
 		if (test_result == 1) {
 			// the function has finished successfully
 			fprintf(fp, "^^^ Sorting method = %s, Test file = %s, Result =  %d\n",

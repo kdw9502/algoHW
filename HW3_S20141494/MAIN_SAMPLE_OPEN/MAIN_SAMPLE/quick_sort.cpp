@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <algorithm>
+#include <math.h>
 #include "my_types.h"
 #define ELEMENT_SWAP(a,b) {ELEMENT temp;temp=a;a=b;b=temp;}
 #define MIN(a,b) (((a)<(b))?(a):(b))
@@ -13,20 +13,26 @@ int pivot_select(ELEMENT *data, int left, int right) {
 int QUICK_SORT(ELEMENT data[], int left, int right) {
 	// must return 1 if the function finishes normally or return 0 otherwise
 	//	return 0;
-	int size = right - left + 1,pivot;
+	int i = left, j = right;
 	ELEMENT temp;
-	int i, j;
-	pivot = pivot_select(data, left, right);
-	if (left > right) return 0;
-	for (i=left, j=right; i<j; )
-	{
-		for (; data[i].key <= pivot; i++);
-		for (; data[j].key > pivot; j--);
-		if (i < j)ELEMENT_SWAP(data[i],data[j]);
-	}
-	
-	ELEMENT_SWAP(data[left], data[j]);
-	QUICK_SORT(data,left,j-1);
-	QUICK_SORT(data, j+1, right);
+	int pivot = pivot_select(data,left,right);
+
+	while (i <= j) {
+		while (data[j].key > pivot)
+			j--;
+		while (data[i].key < pivot)
+			i++;
+		if (i <= j) {
+			ELEMENT_SWAP(data[i], data[j]);
+			i++;
+			j--;
+		}
+	};
+
+	if (left < j)
+		QUICK_SORT(data, left, j);
+	if (i < right)
+		QUICK_SORT(data, i, right);
 	return 1;
 }
+
