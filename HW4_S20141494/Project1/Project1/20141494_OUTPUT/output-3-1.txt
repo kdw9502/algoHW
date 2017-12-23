@@ -1,5 +1,5 @@
 2
-7
-BABCBAB
-3
-xyx
+23
+BABCBABBBABCBABBBABCBAB
+15
+xyxaxyxaxyxaxyx
