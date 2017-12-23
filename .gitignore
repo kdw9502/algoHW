@@ -3,3 +3,22 @@
 ################################################################################
 
 *.ipch
+*.db
+*.opendb
+*.db
+/HW3_S20141494/MAIN_SAMPLE_OPEN/.vs/MAIN_SAMPLE/v15/Browse.VC.db
+*.opendb
+*.db
+/HW3_S20141494/MAIN_SAMPLE_OPEN/MAIN_SAMPLE/x64/Debug
+/HW3_S20141494/MAIN_SAMPLE_OPEN/x64/Debug
+*.exe
+*.ilk
+*.pdb
+*.tlog
+*.lastbuildstate
+*.suo
+*.obj
+*.idb
+*.enc
+*.log
+/HW3_S20141494.zip
